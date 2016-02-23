@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<testsuite name="translate" failures="0">
+  <testcase name="test/fixtures/en.json" failures="0"/>
+  <testcase name="test/fixtures/es.json" failures="0"/>
+  <testcase name="test/fixtures/page.html" failures="0"/>
+  <testcase name="test/fixtures/pageWithError.html" failures="1">
+    <failure>
+      <![CDATA[Id is not declared in translations files:
+ 1 |     <body>
+ 2 |     <div>{{'LABEL_A' | translate}}</div>
+ 3 |     <div>{{'LABEL_MISSING' | translate}}</div>
+-----------------^
+ 4 |     </body>
+ 5 | </html>]]>
+    </failure>
+  </testcase>
+</testsuite>

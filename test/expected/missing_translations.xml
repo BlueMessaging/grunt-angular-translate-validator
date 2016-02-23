@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<testsuite name="translate" failures="0">
+  <testcase name="test/fixtures/en.json" failures="0"/>
+  <testcase name="test/fixtures/es.json" failures="0"/>
+  <testcase name="test/fixtures/fr.json" failures="1">
+    <failure>
+      <![CDATA[LABEL_B: is declared in test/fixtures/en.json, test/fixtures/es.json but not in this file]]>
+    </failure>
+  </testcase>
+  <testcase name="test/fixtures/page.html" failures="0"/>
+</testsuite>

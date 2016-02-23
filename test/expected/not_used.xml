@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<testsuite name="translate" failures="0">
+  <testcase name="test/fixtures/de.json" failures="1">
+    <failure>
+      <![CDATA[Id is never used:
+ 97  |   "LABEL_C": "C",
+ 98  |   "LABEL_D": "D",
+ 99  |   "LABEL_NOT_USED": "LABEL_NOT_USED"
+----------^
+ 100 | 
+ 101 | ]]>
+    </failure>
+  </testcase>
+  <testcase name="test/fixtures/page.html" failures="0"/>
+</testsuite>

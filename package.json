@@ -1,0 +1,41 @@
+{
+  "name": "grunt-angular-translate-validator",
+  "description": "Checks that all the translations id exist and are been used",
+  "version": "0.1.0",
+  "homepage": "https://github.com/JonatanElias/grunt-angular-translate-validator",
+  "author": {
+    "name": "jon-eliaslr",
+    "email": "jluna@bluemessaging.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/JonatanElias/grunt-angular-translate-validator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JonatanElias/grunt-angular-translate-validator/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/JonatanElias/grunt-angular-translate-validator/blob/master/LICENSE-MIT"
+    }
+  ],
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "^0.9.2",
+    "grunt-contrib-clean": "^0.5.0",
+    "grunt-contrib-nodeunit": "^0.3.3",
+    "grunt": "~0.4.5"
+  },
+  "keywords": [
+    "gruntplugin"
+  ],
+  "dependencies": {
+    "xmlbuilder": "^4.2.1"
+  }
+}
