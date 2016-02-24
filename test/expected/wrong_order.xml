@@ -1,25 +1,15 @@
 <?xml version="1.0"?>
-<testsuite name="translate" failures="0">
-  <testcase name="test/fixtures/fr.json" failures="1">
+<testsuite name="translate" failures="1">
+  <testcase name="test/fixtures/it.json" failures="1">
     <failure>
       <![CDATA[Id is not sorted:
  0 | {
  1 |   "LABEL_C": "C",
  2 |   "LABEL_A": "A",
 --------^
- 3 |   "LABEL_D": "D"
- 4 | }]]>
+ 3 |   "LABEL_B": "B",
+ 4 |   "LABEL_D": "D"]]>
     </failure>
   </testcase>
-  <testcase name="test/fixtures/page.html" failures="1">
-    <failure>
-      <![CDATA[Id is not declared in translations files:
- 3 |     <div>{{'LABEL_C' | translate}}</div>
- 4 |     <div>{{"LABEL_D" | translate}}</div>
- 5 |     <div>{{"LABEL_B" | translate}}</div>
------------------^
- 6 |     </body>
- 7 | </html>]]>
-    </failure>
-  </testcase>
+  <testcase name="test/fixtures/page.html" failures="0"/>
 </testsuite>

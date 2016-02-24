@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<testsuite name="translate" failures="0">
+<testsuite name="translate" failures="1">
   <testcase name="test/fixtures/en.json" failures="0"/>
   <testcase name="test/fixtures/es.json" failures="0"/>
   <testcase name="test/fixtures/fr.json" failures="1">

@@ -63,6 +63,12 @@ Default value: `false`
 
 Optionally checks if the files are alphabetically sorted
 
+#### options.exceptions
+Type: `Array`
+Default value: `[]`
+
+Translation ids in this array that match the regex and are not declared in the language files are ignored.
+
 ### Usage Examples
 
 #### Default Options
@@ -87,7 +93,8 @@ grunt.initConfig({
     options: {
       translations: ['languages/en.json', 'languages/es.json'],
       regex: 'TRANSLATION_[A-Z]+',
-      reporterOutput: ''
+      reporterOutput: '',
+      exceptions: []
     },
     files: [ 'app/page.html', ],
   },

@@ -31,30 +31,49 @@ exports.angular_translate_validator = {
     test.expect(1);
     var actual = grunt.file.read('tmp/default_options.xml');
     var expected = grunt.file.read('test/expected/default_options.xml');
-    test.equal(actual, expected, 'should describe what the default behavior is.');
+    test.equal(actual, expected, 'Result must be empty');
     test.done();
   },
   custom_options: function(test) {
     test.expect(1);
     var actual = grunt.file.read('tmp/custom_options.xml');
     var expected = grunt.file.read('test/expected/custom_options.xml');
-    test.equal(actual, expected, 'should describe what the default behavior is.');
+    test.equal(actual, expected, 'Must have 0 exceptions');
     test.done();
   },
   missing_translations: function(test) {
-    test.expect(0);
+    test.expect(1);
+    var actual = grunt.file.read('tmp/missing_translations.xml');
+    var expected = grunt.file.read('test/expected/missing_translations.xml');
+    test.equal(actual, expected, 'Must report missing translation ids');
     test.done();
   },
   wrong_order: function(test) {
-    test.expect(0);
+    test.expect(1);
+    var actual = grunt.file.read('tmp/wrong_order.xml');
+    var expected = grunt.file.read('test/expected/wrong_order.xml');
+    test.equal(actual, expected, 'Must reporter wrong json order');
     test.done();
   },
   missing_ids: function(test) {
-    test.expect(0);
+    test.expect(1);
+    var actual = grunt.file.read('tmp/missing_ids.xml');
+    var expected = grunt.file.read('test/expected/missing_ids.xml');
+    test.equal(actual, expected, 'Must report one missing id');
     test.done();
   },
   not_used: function(test) {
-    test.expect(0);
+    test.expect(1);
+    var actual = grunt.file.read('tmp/not_used.xml');
+    var expected = grunt.file.read('test/expected/not_used.xml');
+    test.equal(actual, expected, 'Must report one not used id');
+    test.done();
+  },
+  missing_ids_exception: function(test) {
+    test.expect(1);
+    var actual = grunt.file.read('tmp/missing_ids_exception.xml');
+    var expected = grunt.file.read('test/expected/missing_ids_exception.xml');
+    test.equal(actual, expected, 'Must have 0 exceptions');
     test.done();
   }
 };

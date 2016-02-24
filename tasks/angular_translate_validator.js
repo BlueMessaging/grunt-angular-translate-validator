@@ -21,10 +21,11 @@ module.exports = function(grunt) {
     var options = this.options({
       regex: '',
       translations: [],
-      ordered: false
+      ordered: false,
+      exceptions: []
     });
 
-    var errorCollection = [];
+    var errorsCount = 0;
     var errors = {};
 
     if (options.translations === undefined) {
@@ -32,6 +33,37 @@ module.exports = function(grunt) {
     }
     var translationIds = {};
     var notUsedIds = {};
+
+    function report() {
+      var xml = xmlBuilder.create('testsuite')
+        .att('name', 'translate')
+        .att('failures', errorsCount);
+      var keys = Object.keys(errors);
+      for (var i = 0; i < keys.length; i++) {
+        var testcase = xml.ele('testcase');
+        testcase.att('name', keys[i]);
+        var failures = errors[keys[i]];
+        testcase.att('failures', failures.length);
+        for (var j = 0; j < failures.length; j++) {
+          testcase.ele('failure').dat(failures[j].getErrorText());
+        }
+      }
+      grunt.file.write(options.reporterOutput, xml.end({ pretty: true, indent: '  ', newline: '\n' }))
+    }
+
+    function addError(file, msg, line, col) {
+      var error = new Error(file, msg, line, col);
+      if (errors[file]) {
+        errors[file].push(error)
+      } else {
+        errors[file] = [error];
+      }
+      errorsCount++;
+    }
+
+    var isAnException = function(translateId) {
+      return options.exceptions.indexOf(translateId) >= 0;
+    };
 
     var filterFunction = function(element) {
       for (var i = 0; i < this.length; i++) {
@@ -96,7 +128,7 @@ module.exports = function(grunt) {
         }
 
         for (var j = 0; j < ids.length; j++) {
-          if (!translationIds[ids[j]]) {
+          if (!translationIds[ids[j]] && !isAnException(ids[j])) {
             grunt.log.errorlns(file +': ' + ids[j] + ' is not declared in translations files');
             var index = content[i].indexOf(ids[j]);
             addError(file, 'Id is not declared in translations files', i, index);
@@ -123,30 +155,9 @@ module.exports = function(grunt) {
       report();
     }
 
-    function report () {
-      var xml = xmlBuilder.create('testsuite')
-        .att('name', 'translate')
-        .att('failures', errorCollection.length);
-      var keys = Object.keys(errors);
-      for (var i = 0; i < keys.length; i++) {
-        var testcase = xml.ele('testcase');
-        testcase.att('name', keys[i]);
-        var failures = errors[keys[i]];
-        testcase.att('failures', failures.length);
-        for (var j = 0; j < failures.length; j++) {
-          testcase.ele('failure').dat(failures[j].getErrorText());
-        }
-      }
-      grunt.file.write(options.reporterOutput, xml.end({ pretty: true, indent: '  ', newline: '\n' }))
-    }
-
-    function addError(file, msg, line, col) {
-      var error = new Error(file, msg, line, col);
-      if (errors[file]) {
-        errors[file].push(error)
-      } else {
-        errors[file] = [error];
-      }
+    if (errorsCount > 0) {
+      grunt.log.error(errorsCount + ' translations problems found');
+      grunt.fail.warn('');
     }
 
   });

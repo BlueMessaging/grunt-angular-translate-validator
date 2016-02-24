@@ -56,7 +56,7 @@ module.exports = function(grunt) {
       },
       wrong_order: {
         options: {
-          translations: ['test/fixtures/fr.json'],
+          translations: ['test/fixtures/it.json'],
           regex: 'LABEL_[A-Z0-9_-]*',
           ordered: 'true',
           reporterOutput: 'tmp/wrong_order.xml'
@@ -80,6 +80,16 @@ module.exports = function(grunt) {
           reporterOutput: 'tmp/not_used.xml'
         },
         src: ['test/fixtures/page.html']
+      },
+      missing_ids_exception: {
+        options: {
+          translations: ['test/fixtures/en.json', 'test/fixtures/es.json'],
+          regex: 'LABEL_[A-Z0-9_-]*',
+          ordered: 'true',
+          reporterOutput: 'tmp/missing_ids_exception.xml',
+          exceptions: ['LABEL_MISSING']
+        },
+        src: ['test/fixtures/*.html']
       }
     },
 

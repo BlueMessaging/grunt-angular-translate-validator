@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<testsuite name="translate" failures="0">
+  <testcase name="test/fixtures/en.json" failures="0"/>
+  <testcase name="test/fixtures/es.json" failures="0"/>
+  <testcase name="test/fixtures/page.html" failures="0"/>
+  <testcase name="test/fixtures/pageWithError.html" failures="0"/>
+</testsuite>
